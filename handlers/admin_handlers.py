@@ -480,4 +480,17 @@ async def admin_pending_deposits(update: Update, context: CallbackContext):
             f"👤 {username}\n"
             f"💰 {deposit[2]:.2f} পয়েন্ট\n"
             f"💳 {deposit[3]}\n"
-            f"📅 {deposit[5]}\n
+            f"📅 {deposit[5]}\n\n"
+        )
+    
+    await query.edit_message_text(
+        text,
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("✅ অনুমোদন করুন", callback_data="admin_approve_deposits")],
+            [InlineKeyboardButton("🔙 বিজ্ঞাপন ব্যবস্থাপনা", callback_data="admin_ad_management")]
+        ])
+    )
+
+async def admin_approve_deposits(update: Update, context: CallbackContext):
+    query = update.callback_query
+    a
